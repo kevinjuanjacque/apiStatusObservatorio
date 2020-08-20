@@ -1,11 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </head>
+
 <body>
-    <h1>hola</h1>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1">Servidores Status Informations</span>
+    </nav>
+
+    <div class="container" style="padding-top: 50px;">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        Servidor 45
+                    </div>
+                    <p>status:</p>
+                    &emsp;
+                    <p id='status45'></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container" style="padding-top: 50px;">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        Servidor 186
+                    </div>
+                    <p>status:</p>
+                    &emsp;
+                    <p id='status186'></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="padding-top: 50px;">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        Servidor 170
+                    </div>
+                    status:&emsp; <p id='status170'></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="padding-top: 50px;">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        Servidor 168
+                    </div>
+                    status:&emsp; <p id='status168'></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+        var mensaje = [];
+        axios.get('https://api-servidores-observatorio.herokuapp.com/api/servidores/status/', {
+            responseType: 'json'
+        }).then(function (res) {
+            if (res.status == 200) {
+                for (let i = 0; i < res.data.length; i++) {
+                    mensaje.push(res.data[i]);
+                }
+                var status186 = mensaje.filter(m => m.servidor == 186);
+                document.getElementById("status186").innerHTML = (status186[0].status);
+                var status170 = mensaje.filter(m => m.servidor == 170);
+                document.getElementById("status170").innerHTML = (status170[0].status);
+                var status168 = mensaje.filter(m => m.servidor == 168);
+                document.getElementById("status168").innerHTML = (status168[0].status);
+                var status45 = mensaje.filter(m => m.servidor == 45);
+                document.getElementById("status45").innerHTML = (status45[0].status);
+            }
+        }
+        );
+    </script>
 </body>
+
 </html>
