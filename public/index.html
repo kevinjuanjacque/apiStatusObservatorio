@@ -28,7 +28,7 @@
                     &emsp;
                     <p id='status45'></p><hr />
                     <p>Query en:</p>
-                    <p id='query145'></p>
+                    <p id='query45'></p>
                     <hr />
                     <p>De:</p>
                     <p id='totalQuery45'></p>
@@ -129,8 +129,8 @@
                 document.getElementById("totalQuery168").innerHTML = (status186[0].totalQuery);
                 var status45 = mensaje.filter(m => m.servidor == 45);
                 document.getElementById("status45").innerHTML = (status45[0].status);
-                document.getElementById("query45").innerHTML = (status186[0].query);
-                document.getElementById("totalQuery45").innerHTML = (status186[0].totalQuery);
+                document.getElementById("query45").innerHTML = (status45[0].query);
+                document.getElementById("totalQuery45").innerHTML = (status45[0].totalQuery);
             }
         }
         );
