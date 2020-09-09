@@ -1,7 +1,9 @@
 [
  {
   "servidor": 170,
-  "status": "inicial"
+  "status": "inicial",
+  "query":0,
+  "totalQuery":0
  },
  {
   "servidor": 186,
